@@ -37,7 +37,7 @@ public class LoginServlet  extends HttpServlet{
         
         
         request.setAttribute("usuario", usuario);
-        sesiones.add(usuario);
+        if(!sesiones.contains(usuario)) sesiones.add(usuario);
         request.setAttribute("sesiones", sesiones.toString());
         
 
@@ -57,5 +57,9 @@ public class LoginServlet  extends HttpServlet{
 //            }
 //        }
 
+    }
+    
+    public void quitarSesion(String usuario) {
+        sesiones.remove(usuario);
     }
 }

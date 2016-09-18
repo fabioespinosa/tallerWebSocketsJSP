@@ -14,7 +14,8 @@
     <body>
         <h1>Collaborative Whiteboard</h1>
         <h2 style="margin-left:400px">Bienvenido ${usuario}</h2>
-        <button>Cerrar Sesión</button>
+        <form action="./logout"><button>Cerrar Sesión</button></form>
+        
         <table>
             <tr>
                 <td>
@@ -45,9 +46,9 @@
             </tr>
         </table>    
         <label>Usuarios en linea: </label><p id="usuariosEnLinea"></p>
-        <label>Usuarios en linea Usando EL:</label><br/>
+        <label>Usuarios que han ingresado antes:</label><br/>
         ${sesiones}
-        <br/><button>Descargar</button>
+        <br/><button onclick="saveCanvas()">Descargar</button>
         <script>
             //var wsUri = "ws://" + document.location.host + document.location.pathname + "whiteboardendpoint";
 var wsUri = "ws://" + document.location.host + "/WhiteBoardApp" + "/whiteboardendpoint/${usuario}";
@@ -73,7 +74,7 @@ function onMessage(evt) {
     if(evt.data.startsWith("[")){
         var stringComas = evt.data.substring(1, evt.data.length-1);
         var arrayUsuarios = stringComas.split(",");
-        document.getElementById("usuariosEnLinea").innerHTML = arrayUsuarios.toString();
+        document.getElementById("usuariosEnLinea").innerHTML = arrayUsuarios.join(',');
         
     }else {
         drawImageText(evt.data);

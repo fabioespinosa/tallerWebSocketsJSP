@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Hola ${name}</h1>
-        <form action="/WhiteBoardApp/login" method="post">
+        <form action="./login" method="post">
             Porfavor ingrese un usuario existente o nuevo
             <input type="text" name="usuario"/>
             <input type="submit"/>

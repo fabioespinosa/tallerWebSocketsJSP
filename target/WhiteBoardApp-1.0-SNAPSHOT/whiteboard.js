@@ -9,6 +9,15 @@ var canvas = document.getElementById("myCanvas");
 var context = canvas.getContext("2d");
 canvas.addEventListener("click", defineImage, false);
 
+function saveCanvas() {
+    var url = canvas.toDataURL();
+    var a = document.createElement('a');
+      a.href = url;
+      // may need to check the datatype, or just write image to another tmp canvas first.
+      a.download = 'canvas.jpg';
+      a.click();
+}
+
 function getCurrentPos(evt) {
     var rect = canvas.getBoundingClientRect();
     return {
